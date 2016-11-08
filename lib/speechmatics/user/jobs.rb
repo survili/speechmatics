@@ -38,7 +38,7 @@ module Speechmatics
       content_type = "" # params[:content_type] || MimeMagic.by_path(file_path).to_s
       # raise "No content type specified for file, please provide a :content_type value" unless content_type
       # raise "Content type for file '#{file_path}' is not audio or video, it is '#{content_type}'." unless (content_type =~ /audio|video/)
-
+      puts "original_filename #{params[:original_filename]}"
       params[:data_file] = Faraday::UploadIO.new(file_path, content_type, params[:original_filename])
       params
     end
