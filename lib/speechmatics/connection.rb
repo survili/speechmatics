@@ -30,9 +30,9 @@ module Speechmatics
     end
 
     def connection(options={})
-      if options[:allow_text]
+      if options['allow_text']  # there was a'bug', it was looking for symbol :allow_text, options is Hash not! HashWithIndiff, and when merge is called one call before, it converts the symbol :allow_text to 'allow_text', I think the dev of the gem, never testest alignment. BTW, if this flag is not turned on, there is an expcetion while parsing alignment format, thinking that it is a json..
         allow_text = true
-        options.delete(:allow_text)
+        options.delete('allow_text')
       else
         allow_text =false
       end
