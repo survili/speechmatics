@@ -45,8 +45,8 @@ module Speechmatics
 
     def attach_text(params={})
       file_path = params[:text_file]
-      raise "No file exists at path '#{file_path}'" unless File.exists?(file_path)
-      params[:text_file] = Faraday::UploadIO.new(file_path, "text/plain; charset=utf-8",)
+      # raise "No file exists at path '#{file_path}'" unless File.exists?(file_path)
+      params[:text_file] = Faraday::UploadIO.new(file_path, "text/plain; charset=utf-8", 'text.txt')
       params
     end
 
